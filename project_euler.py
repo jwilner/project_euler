@@ -586,11 +586,6 @@ def pandigital_products():
 	identities  = [(int(''.join(x[5:])),x[:5]) for x in possibilities]
 	return {p for p,x in identities if int(''.join(x[:2]))*int(''.join(x[2:]))==p or int(''.join(x[:1]))*int(''.join(x[1:])) == p}
 
-def prime_factorize(n):
-	'''
-	returns a dictionary of prime factors and their frequency
-	'''
-	pass
 
 def prime_permutations():
 	'''
@@ -686,7 +681,6 @@ def proper_reduced_fractions_in_range(minimum = '1/3',maximum = '1/2',denominato
 	returns all proper reduced fractions with a limited denominator between two given values
 	problem 73
 	'''
-	from fractions import Fraction,gcd
 	
 	minimum,maximum = Fraction(minimum),Fraction(maximum)
 
@@ -738,7 +732,6 @@ def n_convergents_of_root_two(i):
 	returns the nth convergent of the continued fraction of root two
 	problem 65
 	'''
-	from fractions import Fraction
 	n,d = 1,1
 	fracs = []
 	for j in range(0,i):
