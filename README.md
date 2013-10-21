@@ -1,6 +1,5 @@
-project_euler
-=============
+# project_euler
 
-my Project Euler solutions
+My Project Euler solutions in python.
 
-To-do: make this all not one obscene file and clean out solutions I didn't use
+Currently in the process of being reorganized.
