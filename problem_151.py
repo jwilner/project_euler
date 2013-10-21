@@ -1,4 +1,3 @@
-import sys
 
 papers = 5 
 all_envelopes = [[1]]
@@ -23,5 +22,5 @@ def build_tree(env_index,node):
     
 if __name__ == '__main__':
     build_tree(0,tree[0])
-    for val in sorted(all_envelopes):
-        print val
+    for i,val in enumerate(all_envelopes):
+        print i, val

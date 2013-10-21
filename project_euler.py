@@ -1328,6 +1328,7 @@ def proper_reduced_fraction_to_left(target='3/7',d_max=8):
 	to the left of the given target
 	problem 71
 	'''
+
 	from fractions import Fraction
 	import bisect
 
@@ -1552,6 +1553,7 @@ def flea_circus(fleas):
 	for xy in fleas:
 		grid.add(xy)
 	return 900-len(grid)
+
 def flea_position(coords,n = 50):
 	'''
 	Find the probability of all end points for a flea beginning at grid position x,y after n jumps  
@@ -1572,7 +1574,8 @@ def flea_position(coords,n = 50):
 			for (a,b) in options:
 				new_matrix[(a,b)] += new_prob
 		matrix = new_matrix
-	return matrix
+        return matrix
+
 def full_matrix():
 	'''
 	Using resultant flea_positions, find the probability that any given square will be empty
