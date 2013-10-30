@@ -10,7 +10,7 @@ problem 12
     def get_nth_triangle_number(self,n):
         '''finds the nth triangle number'''
         if n in self.cache:
-                return self.cache[n]
+            return self.cache[n]
         new_val = (n*(n+1))/2
         self.cache[n] = new_val
         return new_val
@@ -21,9 +21,7 @@ problem 12
         i = 1
         num_factors = 1
         while num_factors < n:
-                i = i + 1
-                factors = factorNumber(self.getNthTriangleNumber(i))
-                num_factors = len(factors)
+            i = i + 1
+            factors = factorNumber(self.getNthTriangleNumber(i))
+            num_factors = len(factors)
         return (i,num_factors)
-
-

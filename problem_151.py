@@ -1,5 +1,5 @@
 
-papers = 5 
+papers = 5
 all_envelopes = [[1]]
 tree = {0:{}}
 
@@ -19,7 +19,7 @@ def build_tree(env_index,node):
             node[env_type] = {}
             build_tree(env_type,node[env_type])
     return node
-    
+
 if __name__ == '__main__':
     build_tree(0,tree[0])
     for i,val in enumerate(all_envelopes):
