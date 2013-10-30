@@ -1,4 +1,4 @@
-import itertools
+import itertools,functools
 
 def nth(iterable, n, default=None):
     '''
@@ -99,5 +99,29 @@ class Totient:
 
 def totient(n):
 	return int(n * functools.reduce(operator.mul,[1-fractions.Fraction(1,i)  for i in set(prime_factors(n))]))
+
+def dijkstra(graph,source,target,neighbor_func,distance_func):
+	infinity = float('inf')
+	unvisited,distances,previous = {n for n in graph},collections.defaultdict(lambda : infinity),collections.defaultdict(lambda : None)		
+	distances[source] = 0
+	while unvisited:
+		current = min(unvisited.intersection(distances),key=lambda x:distances[x])
+		unvisited.remove(current)
+		if distances[current] == infinity:
+			break
+		for n in neighbor_func(current):
+			if n not in unvisited:
+				continue
+			alt = distances[current] + distance_func(current,n)
+			if alt < distances[n]:
+				distances[n],previous[n] = alt, current
+	if not target:
+		return previous
+	s,u = [],target
+	while previous[u]:
+		s.append(u)
+		u = previous[u]
+	s.reverse()
+	return tuple([source]+s)
 
 
