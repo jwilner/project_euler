@@ -1,11 +1,12 @@
 import math
 
+
 def get_all_primes_under(maximum):
     '''
     returns list of all primes under maximum ('sieve of eratosthones')
     problem 10, problem 27
     '''
-    boundary = math.floor((maximum - 1) / 2) ##only odds need be considered
+    boundary = (maximum - 1) // 2 ##only odds need be considered
     sieve = {d:False for d in range(1,boundary+1)}
     '''
     sieve index i corresponds to odd number 2i + 1
