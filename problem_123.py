@@ -1,7 +1,8 @@
 from problem_10 import get_all_primes_under
+from itertools import islice
 
 
-primes = get_all_primes_under(10**5)
+primes = get_all_primes_under(10**6)
 
 
 def get_square_prime_remainder(p, n):
@@ -9,11 +10,11 @@ def get_square_prime_remainder(p, n):
 
 
 def prime_square_remainder(limit):
-    for i, prime in enumerate(primes):
-        r = get_square_prime_remainder(prime, i)
+    for i, prime in islice(enumerate(primes), 7034, None, 2):
+        r = get_square_prime_remainder(prime, i + 1)
         if r > limit:
-            return i
+            return i + 1
 
 
 if __name__ == '__main__':
-    print prime_square_remainder(10**9)
+    print prime_square_remainder(10**10)
