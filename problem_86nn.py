@@ -37,7 +37,8 @@ def pythagorean_triples(max_side=100):
 
 def count_integer_solutions(target=2000):
     solutions = set()
-    for a, b, _ in sorted(pythagorean_triples(10**4), key=lambda x: x[1]):
+    for a, b, _ in sorted(pythagorean_triples(10**3),
+                          key=lambda x: max(x[0], x[1]//2)):
         solutions.update(tuple(sorted([new_a, a - new_a, b]))
                          for new_a in xrange(1, a))
         solutions.update(tuple(sorted([new_b, b - new_b, a]))
