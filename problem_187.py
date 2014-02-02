@@ -8,7 +8,7 @@ def number_of_prime_factors(maximum):
     for i, p in enumerate(primes):
         while primes[last_index] * p > maximum:
             if i > last_index:
-                return count + 1  # square of prime at i still be in bounds
+                return count  # square of prime at i still be in bounds
             last_index -= 1
         count += last_index - i + 1
 

@@ -1,6 +1,9 @@
 
 
 def is_prime(n):
+    if n < 2:
+        return False
+
     max_factor = n**.5
 
     def seq_gen():
