@@ -1,29 +1,24 @@
 
-def lattice_path(n):
-    '''
-    grid representing problem space
-    problem15
-    '''
-    if type(n) != int:
-        raise TypeError
 
-    grid = []
-    for i in range(1,n+2):
-        grid.append([0]*(n+2))
-    x = 0;
+def lattice_paths(n):
+    """
+    Returns the number of paths through a grid of size n by n
+    """
+    grid = {}
 
-    while x < n+1:
-        y = 0
-        while y < n+1:
-            ways = 0
-            if x > 0:
-                ways = ways + grid[x-1][y]
-            if y > 0:
-                ways = ways + grid[x][y-1]
-            if ways == 0:
-                ways = 1
-                grid[x][y] = ways
-            y = y + 1
-        x = x + 1
+    def set_paths(a, b, paths_to_point):
+        grid.update({(a, b): paths_to_point,
+                     (b, a): paths_to_point})
 
-    return grid
+    for v in xrange(n + 1):
+        set_paths(v, 0, 1)
+
+    for x in xrange(1, n + 1):
+        for y in xrange(x, n + 1):
+            set_paths(x, y, grid[x - 1, y] + grid[x, y - 1])
+
+    return grid[n, n]
+
+
+if __name__ == '__main__':
+    print lattice_paths(20)
