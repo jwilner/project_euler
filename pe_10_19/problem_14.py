@@ -1,35 +1,30 @@
 
-def getCollatz(n):
-    '''
-    Return the next term in a collatz sequence
-    problem 14
-    '''
-    return n / 2 if n % 2 == 0 else (n*3)+1
 
-def getCollatzSequence(n):
-    '''
-    Returns a list representing a collatz sequence beginning with the given number.
-    problem 14
-    '''
-    a_list = [n]
-    while n != 1:
-        n = getCollatz(n)
-        a_list.append(n)
+def max_collatz(maximum):
+    lengths = {1: 1}
 
-    return a_list
+    def get_collatz(n):
+        seq = []
+        while n not in lengths:
+            seq.append(n)
+            n = n // 2 if n % 2 == 0 else (n * 3) + 1
 
-def getLongestCollatzSequenceUnder(max):
-    '''
-    returns a list representing the longest collatz sequence under the provided maximum
-    problem 14
-    '''
-    longest = 1
-    length = 1
-    i = 1
-    while i <= max:
-        possLength = len(getCollatzSequence(i))
-        if possLength > length:
-            longest = i
-            length = possLength
-        i = i + 1
-    return {longest : length}
+        length = lengths[n] + 1
+        lengths.update({k: length + i
+                        for i, k in enumerate(seq[::-1])})
+
+    max_length = lengths[1], 1
+    for x in xrange(2, maximum):
+        if x not in lengths:
+            get_collatz(x)
+        if lengths[x] > max_length[0]:
+            max_length = lengths[x], x
+
+    return max_length
+
+
+if __name__ == '__main__':
+    import timeit
+    print timeit.timeit("print max_collatz(10**6)",
+                        setup="from __main__ import max_collatz",
+                        number=10) / 10
